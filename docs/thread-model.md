@@ -317,8 +317,9 @@ the compute pool without the `WithContext` machinery.
 
 ### Blocking
 
-CE3 has a builtin `blocking` which will shift execution to an internal
-blocking threadpool and shift it back afterwards using `Async`.
+CE3 has a builtin `blocking`, which remembers the current threadpoool, shifts execution
+to an internal blocking threadpool, and afterwards shifts it back using `Async` to the
+remembered pool.
 
 This means that we can simply write
 ```scala
